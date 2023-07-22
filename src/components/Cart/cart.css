@@ -1,0 +1,23 @@
+.details {
+  position: sticky;
+  top: 3%;
+}
+.details h3 {
+  text-align: center;
+}
+
+.cart-btn {
+  padding: 10px 50px 10px 50px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+.clear {
+  background-color: red;
+}
+.checkout-btn {
+  background-color: orange;
+}
+.btn-group {
+  text-align: center;
+}
