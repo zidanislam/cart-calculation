@@ -6,6 +6,7 @@ import Main from "./components/Layout/Main";
 import Shop from "./components/Shop/Shop";
 import Checkout from "./components/checkout/Checkout";
 import Inventory from "./components/inventory/Inventory";
+import { productCartLoader } from "./components/loaders/productCartLoader";
 import Login from "./components/login/Login";
 import Orders from "./components/orders/Orders";
 
@@ -16,16 +17,17 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/shop",
-        loader: ()=> fetch("products.json"),
+        loader: () => fetch("products.json"),
         element: <Shop />,
       },
       {
         path: "/",
-        loader: ()=> fetch("products.json"),
+        loader: () => fetch("products.json"),
         element: <Shop />,
       },
       {
-        path: "orders",
+        path: "/orders",
+        loader: productCartLoader,
         element: <Orders />,
       },
       { path: "checkout", element: <Checkout /> },
