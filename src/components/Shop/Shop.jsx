@@ -8,6 +8,7 @@ import "./Shop.css";
 const Shop = () => {
   const products = useLoaderData();
   const [cart, setCart] = useState([]);
+  console.log(cart)
 
   useEffect(() => {
     const savedItem = getFromDb();
@@ -50,7 +51,7 @@ const Shop = () => {
           ></Product>
         ))}
       </div>
-      <div className="cart-container">
+      <div className="review-cart">
         <Cart cart={cart} />
       </div>
     </div>
