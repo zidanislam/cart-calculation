@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import { deleteFromDB } from "../../utilities/localdb";
+import { clearCart, deleteFromDB } from "../../utilities/localdb";
 import Cart from "../Cart/Cart";
 import ReeviewProduct from "../reviewProduct/ReeviewProduct";
 import "./orders.css";
@@ -13,7 +13,10 @@ const Orders = () => {
     setCart(remaining);
     deleteFromDB(id);
   };
-
+  const deleteCart = () => {
+    setCart([]);
+    clearCart();
+  };
   return (
     <div className="shop-container">
       <div className="product-container">
@@ -27,7 +30,7 @@ const Orders = () => {
       </div>
 
       <div className="cart-container">
-        <Cart cart={cart} />
+        <Cart cart={cart} deleteCart={deleteCart} />
       </div>
     </div>
   );

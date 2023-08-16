@@ -7,10 +7,8 @@
 }
 
 .cart-btn {
-  padding: 10px 50px 10px 50px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  text-align: center;
+  width: 90%;
+  margin: 10px 10px;
 }
 .clear {
   background-color: red;

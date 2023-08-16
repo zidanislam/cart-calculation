@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import { addToDb, getFromDb } from "../../utilities/localdb";
+import { addToDb, clearCart, getFromDb } from "../../utilities/localdb";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
 import "./Shop.css";
@@ -8,7 +8,7 @@ import "./Shop.css";
 const Shop = () => {
   const products = useLoaderData();
   const [cart, setCart] = useState([]);
-  console.log(cart)
+  console.log(cart);
 
   useEffect(() => {
     const savedItem = getFromDb();
@@ -32,12 +32,16 @@ const Shop = () => {
       newCart = [...cart, selectedProduct];
     } else {
       const rest = cart.filter((product) => product.id !== selectedProduct.id);
-      exist.quantity = exist.quantity +1;
+      exist.quantity = exist.quantity + 1;
       newCart = [...rest, exist];
     }
     // cart.push(product);
     setCart(newCart);
     addToDb(selectedProduct.id);
+  };
+  const deleteCart = () => {
+    setCart([]);
+    clearCart();
   };
 
   return (
@@ -52,7 +56,7 @@ const Shop = () => {
         ))}
       </div>
       <div className="review-cart">
-        <Cart cart={cart} />
+        <Cart cart={cart} deleteCart={deleteCart} />
       </div>
     </div>
   );
